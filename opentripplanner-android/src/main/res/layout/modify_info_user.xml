@@ -12,7 +12,9 @@
         android:layout_gravity="center_horizontal"
         android:id="@+id/userInfoText"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="30dp"
+        android:textColor="#FF0000"
+        android:textStyle="bold" />
 
 
     <TextView
@@ -37,7 +39,8 @@
         android:layout_marginTop="20dp"
         android:layout_below="@+id/nameLabel"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"/>
+        android:layout_marginRight="20dp"
+        android:imeOptions="actionDone"/>
 
 
 
@@ -61,7 +64,8 @@
         android:id="@+id/ageText"
         android:layout_below="@+id/ageLabel"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"/>
+        android:layout_marginRight="20dp"
+        android:imeOptions="actionDone"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -117,7 +121,8 @@
         android:layout_marginTop="20dp"
         android:layout_below="@+id/altezzaLabel"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"/>
+        android:layout_marginRight="20dp"
+        android:imeOptions="actionDone"/>
 
 
     <TextView
@@ -140,7 +145,8 @@
         android:layout_marginTop="20dp"
         android:layout_below="@+id/pesoLabel"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"/>
+        android:layout_marginRight="20dp"
+        android:imeOptions="actionDone"/>
 
     <Button
         android:layout_width="match_parent"

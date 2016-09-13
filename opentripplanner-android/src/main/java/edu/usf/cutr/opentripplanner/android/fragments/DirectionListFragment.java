@@ -1049,7 +1049,7 @@ class TimerThread extends Thread {
 
             world.add(numPassi);
 
-            if (!Utility.getSharedPreferences(myActivity).getString("name", "").equals("")) {
+            if (!Utility.getSharedPreferences(myActivity).getString("peso", "").equals("")) {
                 // MeshComponent kcal = GLFactory.getInstance().newTextObject("Hai bruciato " + calculateKCal(nav.getDistanceTot()) + " kcal!", new Vec(0, 1, -10), myActivity, camera);
                 //MeshComponent kcal = GLFactory.getInstance().newTextObject("Hai bruciato " + calculateKCal(ws.get(0).getDistance()) + " kcal!", new Vec(0, 1, -10), myActivity, camera);
                 MeshComponent kcal = GLFactory.getInstance().newTextObject("Hai bruciato " + calculateKCal(Passi.getInstance().getPassi()) + " cal!", new Vec(0, 1, -10), myActivity, camera);
