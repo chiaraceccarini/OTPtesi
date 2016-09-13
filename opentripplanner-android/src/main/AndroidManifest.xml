@@ -79,6 +79,10 @@
             android:name=".CameraPreviewActivity"
             android:theme="@style/MyTheme"
             android:windowSoftInputMode="stateHidden"></activity>
+        <activity
+            android:name=".UserInfoActivity"
+            android:theme="@style/MyTheme"
+            android:windowSoftInputMode="stateHidden"></activity>
 
         <activity
             android:name="system.ArActivity"

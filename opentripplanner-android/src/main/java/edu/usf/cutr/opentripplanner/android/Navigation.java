@@ -120,6 +120,10 @@ public class Navigation {
         this.index++;
     }*/
 
+    public double getDistanceTot (){
+        return this.distanceTot;
+    }
+
 
 
 

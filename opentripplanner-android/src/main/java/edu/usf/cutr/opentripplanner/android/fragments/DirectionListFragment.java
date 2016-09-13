@@ -79,7 +79,10 @@ import java.util.Timer;
 import edu.usf.cutr.opentripplanner.android.GPSTracker;
 import edu.usf.cutr.opentripplanner.android.Navigation;
 import edu.usf.cutr.opentripplanner.android.OTPApp;
+import edu.usf.cutr.opentripplanner.android.Passi;
 import edu.usf.cutr.opentripplanner.android.R;
+import edu.usf.cutr.opentripplanner.android.UserInfoActivity;
+import edu.usf.cutr.opentripplanner.android.Utility;
 import edu.usf.cutr.opentripplanner.android.listeners.OtpFragment;
 import edu.usf.cutr.opentripplanner.android.model.Direction;
 import edu.usf.cutr.opentripplanner.android.model.OTPBundle;
@@ -162,6 +165,15 @@ public class DirectionListFragment extends ExpandableListFragment {
 
         Button ARButton = (Button) header.findViewById(R.id.ar);
         Button mibandButton = (Button) header.findViewById(R.id.mb);
+        ImageButton userInfo = (ImageButton) header.findViewById(R.id.userInfo);
+
+        userInfo.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), UserInfoActivity.class);
+                getActivity().startActivity(intent);
+            }
+        });
 
         textToSpeech = new TextToSpeech(getActivity(), new TextToSpeech.OnInitListener() {
             @Override
@@ -634,6 +646,7 @@ class TimerThread extends Thread {
 
 
 
+
     TimerThread(ArrayList<Leg> itinerary, MeshComponent arrow, World world, Activity activity, GLCamera camera, LatLng end, TextToSpeech tts, MiBand miband) {
         this.ws = itinerary.get(0).getSteps();
         this.arrow = arrow;
@@ -651,13 +664,14 @@ class TimerThread extends Thread {
 
     public void run() {
 
-        final List<Integer> passi = new ArrayList<>();
+
 
         miband.setRealtimeStepsNotifyListener(new RealtimeStepsNotifyListener() {
 
             @Override
             public void onNotify(int steps) {
-               passi.add(steps);
+                Passi.getInstance().addPassi();
+               //passi.add(steps);
                 Log.d("PASSI",""+steps);
             }
         });
@@ -876,6 +890,24 @@ class TimerThread extends Thread {
                 world.clear();
                 world.add(destinazione);
 
+                 if (passi.size()!=0) {
+                    MeshComponent numPassi = GLFactory.getInstance().newTextObject("" + passi.size() + " passi!", new Vec(0, 1, -10), myActivity, camera);
+
+            numPassi.setRotation(new Vec(90, 0, 180));
+            numPassi.setPosition(new Vec(0, 0f, -1));
+
+            world.add(numPassi);
+        }
+        if (!Utility.getSharedPreferences(myActivity).getString("name", "").equals("")) {
+            // MeshComponent kcal = GLFactory.getInstance().newTextObject("Hai bruciato " + calculateKCal(nav.getDistanceTot()) + " kcal!", new Vec(0, 1, -10), myActivity, camera);
+            MeshComponent kcal = GLFactory.getInstance().newTextObject("Hai bruciato " + calculateKCal(ws.get(0).getDistance()) + " kcal!", new Vec(0, 1, -10), myActivity, camera);
+
+            kcal.setRotation(new Vec(90, 0, 180));
+            kcal.setPosition(new Vec(0, -0.7f, -1));
+
+            world.add(kcal);
+        }
+
                 Log.d("PASSI TOT",""+passi.size());
 
                 if (can) {
@@ -906,6 +938,7 @@ class TimerThread extends Thread {
         while (index < ws.size()) {
 
             String indicazione = "";
+
             //indicazione
             //String testo = directions.get(0).getDirectionText().toString();
 
@@ -1008,15 +1041,25 @@ class TimerThread extends Thread {
         world.clear();
         world.add(endText);
 
-        if (passi.size()!=0) {
-            MeshComponent numPassi = GLFactory.getInstance().newTextObject(""+passi.size()+" passi!", new Vec(0, 1, -10), myActivity, camera);
+        if (Passi.getInstance().getPassi()!=0) {
+            MeshComponent numPassi = GLFactory.getInstance().newTextObject("" + Passi.getInstance().getPassi() + " passi!", new Vec(0, 1, -10), myActivity, camera);
 
             numPassi.setRotation(new Vec(90, 0, 180));
             numPassi.setPosition(new Vec(0, 0f, -1));
 
             world.add(numPassi);
-        }
 
+            if (!Utility.getSharedPreferences(myActivity).getString("name", "").equals("")) {
+                // MeshComponent kcal = GLFactory.getInstance().newTextObject("Hai bruciato " + calculateKCal(nav.getDistanceTot()) + " kcal!", new Vec(0, 1, -10), myActivity, camera);
+                //MeshComponent kcal = GLFactory.getInstance().newTextObject("Hai bruciato " + calculateKCal(ws.get(0).getDistance()) + " kcal!", new Vec(0, 1, -10), myActivity, camera);
+                MeshComponent kcal = GLFactory.getInstance().newTextObject("Hai bruciato " + calculateKCal(Passi.getInstance().getPassi()) + " cal!", new Vec(0, 1, -10), myActivity, camera);
+
+                kcal.setRotation(new Vec(90, 0, 180));
+                kcal.setPosition(new Vec(0, -0.7f, -1));
+
+                world.add(kcal);
+            }
+        }
 
 
 
@@ -1028,6 +1071,26 @@ class TimerThread extends Thread {
         textToSpeech.speak(indicazione, TextToSpeech.QUEUE_FLUSH, null, "indicazione");
 
         Log.d("TextToSpeech", "sono dentro al parla");
+    }
+
+    private String calculateKCal (int passi) {
+        String p = Utility.getSharedPreferences(myActivity).getString("peso", "");
+        String sesso = Utility.getSharedPreferences(myActivity).getString("sesso", "");
+        String alt = Utility.getSharedPreferences(myActivity).getString("altezza", "");
+
+        double param = 0;
+        if (sesso.equals("Donna")) {
+            param = 0.413;
+        } else {
+            param = 0.415;
+        }
+
+        double altezza = Double.parseDouble(alt);
+        double peso = Double.parseDouble(p);
+
+        //return String.format("%.2f", metri*peso*0.45/1000);
+        return String.format("%.2f", altezza*param*passi*peso/100);
+
     }
 
     public LatLng getLocation() {

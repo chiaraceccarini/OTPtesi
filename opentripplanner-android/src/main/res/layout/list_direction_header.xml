@@ -3,27 +3,36 @@
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
               android:orientation="vertical">
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/ar"
         android:text="NAVIGAZIONE"/>
 
-    <Button
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/mb"
-        android:text="CONNETTI UN MI BAND"/>
-
-    <ImageButton
-        android:id="@+id/userInfo"
+        android:layout_height="wrap_content">   <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/mb"
+        android:text="CONNETTI UN MI BAND"
+        android:layout_toLeftOf="@+id/userInfo"
+        android:layout_alignParentLeft="true" />
+
+        <ImageButton
+            android:id="@+id/userInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:background="@null"
+            android:src="@drawable/user"
+            android:layout_gravity="center_horizontal"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
 
 
-        android:padding="5dp"
-        android:background="@null"
-        android:src="@android:drawable/ic_menu_mapmode"/>
 
     <ListView
         android:layout_width="match_parent"

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Informazioni Utente"
+        android:textAlignment="center"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/userInfoText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Nome"
+        android:id="@+id/nameLabel"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/userInfoText"
+        android:layout_marginLeft="20dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:hint="Name"
+        android:inputType="textCapWords"
+        android:id="@+id/nameText"
+        android:layout_gravity="right"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/nameLabel"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"/>
+
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Età"
+        android:id="@+id/ageLabel"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/nameText"
+        android:layout_marginLeft="20dp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:hint="Età"
+        android:inputType="number"
+        android:layout_marginTop="20dp"
+        android:id="@+id/ageText"
+        android:layout_below="@+id/ageLabel"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Sesso"
+        android:id="@+id/sessoLabel"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/ageText"
+        android:layout_marginLeft="20dp"/>
+
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/radioGroupSesso"
+        android:orientation="horizontal"
+        android:layout_alignTop="@+id/sessoLabel"
+        android:layout_alignRight="@+id/userInfoText">
+
+       <RadioButton
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="F"
+           android:id="@+id/sessoF"
+           android:layout_marginLeft="70dp" />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="M"
+            android:id="@+id/sessoM"
+            android:layout_marginLeft="10dp"/>
+
+        </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Altezza"
+        android:layout_marginTop="20dp"
+        android:id="@+id/altezzaLabel"
+        android:layout_below="@+id/radioGroupSesso"
+        android:layout_marginLeft="20dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/altezzaText"
+        android:hint="Altezza"
+        android:inputType="numberDecimal"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/altezzaLabel"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Peso"
+        android:id="@+id/pesoLabel"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/altezzaText"
+        android:layout_marginLeft="20dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:hint="Peso"
+        android:inputType="numberDecimal"
+        android:id="@+id/pesotext"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/pesoLabel"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Salva"
+        android:id="@+id/saveButton"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_below="@+id/pesotext"
+        android:layout_marginBottom="68dp" />
+
+
+
+
+</RelativeLayout>

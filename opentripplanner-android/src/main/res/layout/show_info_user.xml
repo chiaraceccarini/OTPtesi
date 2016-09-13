@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Informazioni Utente"
+        android:textAlignment="center"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/userInfoText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Nome"
+        android:id="@+id/nameLabelShow"
+        android:layout_marginTop="0dp"
+        android:layout_alignParentLeft="true"
+        android:layout_above="@+id/ageLabelShow"
+        android:layout_marginLeft="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Name"
+        android:id="@+id/nameTextShow"
+        android:layout_gravity="right"
+        android:layout_marginTop="20dp"
+        android:layout_above="@+id/ageTextShow"
+        android:layout_alignLeft="@+id/ageTextShow"/>
+
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Età"
+        android:id="@+id/ageLabelShow"
+        android:layout_marginTop="20dp"
+        android:layout_above="@+id/sessoLabelShow"
+        android:layout_marginLeft="20dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Età"
+        android:layout_marginTop="20dp"
+        android:id="@+id/ageTextShow"
+        android:layout_alignLeft="@+id/sessoTextShow"
+        android:layout_above="@+id/sessoTextShow" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Sesso"
+        android:id="@+id/sessoLabelShow"
+        android:layout_marginTop="20dp"
+        android:layout_above="@+id/altezzaLabelShow"
+        android:layout_marginLeft="20dp"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Sesso"
+        android:id="@+id/sessoTextShow"
+        android:layout_marginTop="20dp"
+        android:layout_above="@+id/altezzaTextShow"
+        android:layout_alignLeft="@+id/altezzaTextShow"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Altezza"
+        android:layout_marginTop="20dp"
+        android:id="@+id/altezzaLabelShow"
+        android:layout_above="@+id/pesoLabelShow"
+        android:layout_marginLeft="20dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/altezzaTextShow"
+        android:hint="Altezza"
+        android:layout_marginTop="20dp"
+        android:layout_above="@+id/pesotextShow"
+        android:layout_alignLeft="@+id/pesotextShow" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Peso"
+        android:id="@+id/pesoLabelShow"
+        android:layout_marginTop="20dp"
+        android:layout_alignBottom="@+id/pesotextShow"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="20dp"/>
+
+    <TextView
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Peso"
+        android:id="@+id/pesotextShow"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_above="@+id/modifyButton"
+        android:layout_alignParentRight="true" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Modifica"
+        android:id="@+id/modifyButton"
+        android:layout_marginTop="100dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/pesotextShow"
+        android:layout_marginBottom="68dp" />
+
+
+
+
+</RelativeLayout>
