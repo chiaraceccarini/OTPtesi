@@ -35,7 +35,7 @@ public class Navigation {
         //+5 per avere un pò di margine (se devi usare un percorso più lungo)
         Log.d("DISTANZA DA POSIZIONE A FINE",""+calculateDistance(punto, to));
         Log.d("DISTANZA TOTALE",""+distanceTot);
-        return calculateDistance(punto, to)<=distanceTot;
+        return calculateDistance(punto, to)<=distanceTot+15;
     }
 
     //calcola distanza tra un punto e quello successivo
@@ -106,12 +106,13 @@ public class Navigation {
         double distance = calculateDistance(puntoA, puntoB);
         Log.d("DISTANCEpunti", ""+distance);
         //return calculateDistance(puntoA, index)<=5;
-        return distance<=15;
+        return distance<=10;
     }
 
     public boolean goOn (LatLng puntoA, int index) {
         if (index>0) {
-            return calculateDistance(puntoA,index, true)<10;
+            Log.d("goOn","goOn");
+            return calculateDistance(puntoA,index, true)<14;
         }
         return  false;
     }

@@ -653,6 +653,29 @@ public class GLFactory {
 		return mesh;
 	}
 
+	public MeshComponent newTextObject(String textToDisplay, Vec textPosition,
+									   Context context, GLCamera glCamera, Color colore) {
+
+		float textSize = 0.15f;
+
+		TextView v = new TextView(context);
+		v.setTextColor(colore.toIntARGB());
+		v.setText(textToDisplay);
+
+
+		Obj o = new Obj();
+		Log.d(LOG_TAG, textToDisplay);
+		MeshComponent mesh = this.newTexturedSquare("textBitmap"
+				+ textToDisplay, util.IO.loadBitmapFromView(v), textSize);
+		mesh.setPosition(textPosition);
+		mesh.setText(textToDisplay);
+		//mesh.addAnimation(new AnimationFaceToCamera(glCamera));
+		o.setComp(mesh);
+		return mesh;
+	}
+
+
+
 	/**
 	 * also read {@link GLFactory#newTexturedSquare(String, Bitmap, float)}
 	 * 
