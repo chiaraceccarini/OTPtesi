@@ -689,35 +689,12 @@ class TimerThread extends Thread {
         boolean canContinue = true;
         String ultimaStrada = "";
 
-       /*Navigation nav = new Navigation(direction);
+       Navigation nav = new Navigation(direction);
         //GPSTracker gps = new GPSTracker(myActivity);
 
         Log.d("END", ""+end.latitude);
         while (index < ws.size()) {
 
-            MeshComponent cartelloGrande = GLFactory.getInstance().newSquare(Color.white());
-            MeshComponent cartellopiccl = GLFactory.getInstance().newSquare(Color.blue());
-            MeshComponent cartellopiccl1 = GLFactory.getInstance().newSquare(Color.blue());
-            MeshComponent scritta1 = GLFactory.getInstance().newTextObject("10000000 passi", new Vec(0, 1, -10), myActivity, camera, Color.blue());
-            MeshComponent scritta= GLFactory.getInstance().newTextObject("10000000 calorie", new Vec(0, 1, -10), myActivity, camera, Color.blue());
-
-            scritta.setRotation(new Vec(90, 0, 180));
-            scritta1.setRotation(new Vec(90, 0, 180));
-            scritta.setPosition(new Vec(-1.2f, -0.7f, -1));
-            scritta1.setPosition(new Vec(-1.2f, -0.3f, -1));
-
-
-
-            cartellopiccl.setPosition(new Vec(-1.7f, -0.9f, -1));
-            cartellopiccl1.setPosition(new Vec(-1.6f, -1f, -1));
-            cartelloGrande.setPosition(new Vec(-1.7f, -1f, -1));
-
-
-            world.add(cartellopiccl);
-            world.add(cartellopiccl1);
-            world.add(cartelloGrande);
-            world.add(scritta);
-            world.add(scritta1);
 
             LatLng punto = getLocation();
 
@@ -769,66 +746,66 @@ class TimerThread extends Thread {
                 } else if (relDir.equals(RelativeDirection.CONTINUE)) {
                     arrow.setRotation(new Vec(0, 0, -135));
                     arrow.setPosition(new Vec(0, -0.5f, -1));
-                    indicazione += "Continua su ";
+                    indicazione += "Continue on ";
                 } else if (relDir.equals(RelativeDirection.DEPART)) {
                     arrow.setRotation(new Vec(0, 0, -135));
                     arrow.setPosition(new Vec(0, -0.5f, -1));
-                    indicazione += "Parti su ";
+                    indicazione += "Depart from ";
                 } else if (relDir.equals(RelativeDirection.ELEVATOR)) {
                     //arrow.setRotation(new Vec(180, 0, 90));
                 } else if (relDir.equals(RelativeDirection.HARD_LEFT)) {
                     arrow.setRotation(new Vec(180, 0, 45));
                     arrow.setPosition(new Vec(-1.7f, 0, -1));
-                    indicazione += "Gira a sinistra su ";
+                    indicazione += "Turn left on ";
                 } else if (relDir.equals(RelativeDirection.HARD_RIGHT)) {
                     arrow.setRotation(new Vec(0, 180, 45));
                     arrow.setPosition(new Vec(1.7f, 0, -1));
-                    indicazione += "Gira a destra su ";
+                    indicazione += "Turn right on ";
                 } else if (relDir.equals(RelativeDirection.LEFT)) {
                     arrow.setRotation(new Vec(180, 0, 45));
                     arrow.setPosition(new Vec(-1.7f, 0, -1));
-                    indicazione += "Gira a sinistra su ";
+                    indicazione += "Turn left on ";
                 } else if (relDir.equals(RelativeDirection.RIGHT)) {
                     arrow.setRotation(new Vec(0, 180, 45));
                     arrow.setPosition(new Vec(1.7f, 0, -1));
-                    indicazione += "Gira a destra su ";
+                    indicazione += "Turn right on ";
                 } else if (relDir.equals(RelativeDirection.SLIGHTLY_LEFT)) {
                     arrow.setRotation(new Vec(180, 0, 45));
                     arrow.setPosition(new Vec(-1.7f, 0, -1));
-                    indicazione += "Svolta leggermente a sinistra su ";
+                    indicazione += "Turn slightly left on ";
                 } else if (relDir.equals(RelativeDirection.SLIGHTLY_RIGHT)) {
                     arrow.setRotation(new Vec(0, 180, 45));
                     arrow.setPosition(new Vec(1.7f, 0, -1));
-                    indicazione += "Svolta leggermente a destra su ";
+                    indicazione += "Turn slightly right on ";
                 } else if (relDir.equals(RelativeDirection.UTURN_LEFT)) {
                     arrow.setRotation(new Vec(180, 0, 45));
                     arrow.setPosition(new Vec(-1.7f, 0, -1));
-                    indicazione += "Svolta a u a sinistra su ";
+                    indicazione += "U-turn left on ";
                 } else if (relDir.equals(RelativeDirection.UTURN_RIGHT)) {
                     arrow.setRotation(new Vec(0, 180, 45));
                     arrow.setPosition(new Vec(1.7f, 0, -1));
-                    indicazione += "Svolta a u a destra su ";
+                    indicazione += "U-turn right on ";
                 } else {
                     //arrow.setRotation(new Vec(180, 0, 90));
                 }
 
                 String strada = ws.get(index).getStreetName();
                 if (strada.contains("path")) {
-                    indicazione += "percorso";
+                    indicazione += "path";
                 } else if (strada.contains("steps")) {
-                    indicazione += "scalino";
+                    indicazione += "steps";
                 } else {
                     indicazione += strada;
                 }
                 ultimaStrada = strada;
 
-                indicazione += " e prosegui";
+                indicazione += " and continue";
 
                 if (nav.goOn(punto, index) || goOn) {
                     arrow.setRotation(new Vec(0, 0, -135));
                     arrow.setPosition(new Vec(0, -0.5f, -1));
 
-                    indicazione = "Continua su " + strada;
+                    indicazione = "Continue on " + strada;
 
                     if (canContinue) {
                         canSpeak = true;
@@ -873,12 +850,12 @@ class TimerThread extends Thread {
                     index ++;
                 }
             } else  {
-                MeshComponent text = GLFactory.getInstance().newTextObject("Stai andando nella direzione opposta!", new Vec(0, 1, -10), myActivity, camera, false);
+                MeshComponent text = GLFactory.getInstance().newTextObject("You are going in the wrong direction!", new Vec(0, 1, -10), myActivity, camera, false);
                 Log.d("SBAGLIO", "sono nello sbaglio direzione");
                 text.setRotation(new Vec(90, 0, 180));
                 text.setPosition(new Vec(0, 0.7f, -1));
                 if (speak) {
-                    final String textSpeech = "Stai andando nella direzione opposta!";
+                    final String textSpeech = "You are going in the wrong direction!";
 
                     parla(textSpeech);
 
@@ -916,7 +893,7 @@ class TimerThread extends Thread {
                 arrow.setRotation(new Vec(0, 0, -135));
                 arrow.setPosition(new Vec(0, -0.5f, -1));
 
-                indicazione = "Continua su " + ultimaStrada;
+                indicazione = "Continue on " + ultimaStrada;
 
                 if (canContinue) {
                     canSpeak = true;
@@ -949,7 +926,7 @@ class TimerThread extends Thread {
 
 
 
-                MeshComponent destinazione = GLFactory.getInstance().newTextObject("Destinazione raggiunta!", new Vec(0, 1, -10), myActivity, camera);
+                MeshComponent destinazione = GLFactory.getInstance().newTextObject("You have reached your destination", new Vec(0, 1, -10), myActivity, camera);
 
                 destinazione.setRotation(new Vec(90, 0, 180));
                 destinazione.setPosition(new Vec(0, 0.7f, -1));
@@ -960,34 +937,35 @@ class TimerThread extends Thread {
 
                 if (Passi.getInstance().getPassi()!=0) {
                     miband.startVibration(VibrationMode.VIBRATION_WITH_LED);
-                    MeshComponent numPassi = GLFactory.getInstance().newTextObject("" + Passi.getInstance().getPassi() + " passi!", new Vec(0, 1, -10), myActivity, camera);
 
-                    numPassi.setRotation(new Vec(90, 0, 180));
-                    numPassi.setPosition(new Vec(0, 0f, -1));
-
-                    world.add(numPassi);
 
                     if (!Utility.getSharedPreferences(myActivity).getString("peso", "").equals("")) {
-                        MeshComponent kcal = GLFactory.getInstance().newTextObject("Hai bruciato " + calculateKCal(Passi.getInstance().getPassi()) + " calorie!", new Vec(0, 1, -10), myActivity, camera);
+                        MeshComponent cartelloGrande = GLFactory.getInstance().newSquare(new Color(0,0,0,1));
+                        MeshComponent cartellopiccl2 = GLFactory.getInstance().newSquare(Color.whiteTransparent());
+                        MeshComponent scritta1 = GLFactory.getInstance().newTextObject(""+Passi.getInstance().getPassi()+" steps", new Vec(0, 1, -10), myActivity, camera, Color.whiteTransparent());
+                        MeshComponent scritta= GLFactory.getInstance().newTextObject(""+calculateKCal(Passi.getInstance().getPassi())+" calories", new Vec(0, 1, -10), myActivity, camera, Color.whiteTransparent());
 
-                        kcal.setRotation(new Vec(90, 0, 180));
-                        kcal.setPosition(new Vec(0, -0.7f, -1));
+                        scritta.setRotation(new Vec(90, 0, 180));
+                        scritta1.setRotation(new Vec(90, 0, 180));
+                        scritta.setPosition(new Vec(-1.2f, -0.8f, -1));
+                        scritta1.setPosition(new Vec(-1.2f, -0.6f, -1));
 
-                        world.add(kcal);
+                        cartelloGrande.setPosition(new Vec(-1.7f, -1.4f, -1));
+                        cartellopiccl2.setPosition(new Vec(-1.6f, -1.3f, -1));
+                        cartellopiccl2.setPosition(new Vec(-1.65f, -1.35f, -1));
+
+                        world.add(cartellopiccl2);
+                        world.add(cartelloGrande);
+                        world.add(scritta);
+                        world.add(scritta1);
                     }
 
-                    MeshComponent cartelloGrande = GLFactory.getInstance().newSquare(Color.blue());
-                    MeshComponent cartelloPiccolo = GLFactory.getInstance().newSquare(Color.white());
-
-                    cartelloGrande.setText(""+Passi.getInstance().getPassi()+" passi, bruciando "+calculateKCal(Passi.getInstance().getPassi())+" calorie");
-
-                    cartelloGrande.setPosition(new Vec(0.7f,-0.7f,-1));
                 }
 
                 //Log.d("PASSI TOT",""+passi.size());
 
                 if (can) {
-                    final String textSpeech = "Destinazione raggiunta!";
+                    final String textSpeech = "You have reached your destination!";
 
                     parla(textSpeech);
 
@@ -1003,7 +981,7 @@ class TimerThread extends Thread {
             }
 
 
-        }*/
+        }
 
 
 
@@ -1013,7 +991,7 @@ class TimerThread extends Thread {
         //int index = 0;
 
 
-        while (index < ws.size()) {
+       /* while (index < ws.size()) {
 
             String indicazione = "";
 
@@ -1164,7 +1142,7 @@ class TimerThread extends Thread {
 
                 world.add(kcal);
             }
-        }
+        }*/
 
 
 
