@@ -180,8 +180,8 @@ public class DirectionListFragment extends ExpandableListFragment {
             @Override
             public void onInit(int status) {
                 if (status == TextToSpeech.SUCCESS){
-                    if (textToSpeech.isLanguageAvailable(Locale.ITALY) == TextToSpeech.LANG_AVAILABLE ) {
-                        textToSpeech.setLanguage(Locale.ITALY);
+                    if (textToSpeech.isLanguageAvailable(Locale.ENGLISH) == TextToSpeech.LANG_AVAILABLE ) {
+                        textToSpeech.setLanguage(Locale.ENGLISH);
                         Log.d("error", "sono dentro all'if");
                     }else{
                         Log.d("Language", "lingua non disponibile");
@@ -691,7 +691,6 @@ class TimerThread extends Thread {
 
        Navigation nav = new Navigation(direction);
         //GPSTracker gps = new GPSTracker(myActivity);
-
         Log.d("END", ""+end.latitude);
         while (index < ws.size()) {
 
@@ -940,24 +939,29 @@ class TimerThread extends Thread {
 
 
                     if (!Utility.getSharedPreferences(myActivity).getString("peso", "").equals("")) {
-                        MeshComponent cartelloGrande = GLFactory.getInstance().newSquare(new Color(0,0,0,1));
-                        MeshComponent cartellopiccl2 = GLFactory.getInstance().newSquare(Color.whiteTransparent());
-                        MeshComponent scritta1 = GLFactory.getInstance().newTextObject(""+Passi.getInstance().getPassi()+" steps", new Vec(0, 1, -10), myActivity, camera, Color.whiteTransparent());
-                        MeshComponent scritta= GLFactory.getInstance().newTextObject(""+calculateKCal(Passi.getInstance().getPassi())+" calories", new Vec(0, 1, -10), myActivity, camera, Color.whiteTransparent());
+                        MeshComponent cartelloGrande = GLFactory.getInstance().newSquare(new Color(255, 255, 255, 1));
+                        MeshComponent cartellopiccl2 = GLFactory.getInstance().newSquare(new Color(0, 255, 0, 1));
+                        MeshComponent scritta1 = GLFactory.getInstance().newTextObject("" + Passi.getInstance().getPassi() + " steps", new Vec(0, 1, -10), myActivity, camera, new Color(0, 0, 0, 1));
+                        MeshComponent scritta= GLFactory.getInstance().newTextObject("" + calculateKCal(Passi.getInstance().getPassi()) + " calories", new Vec(0, 1, -10), myActivity, camera,  new Color(0,0,0,1));
+
+                        cartelloGrande.setPosition(new Vec(-1.7f, -1.4f, -1));
+                        //cartellopiccl2.setPosition(new Vec(-1.6f, -1.3f, -1));
+                        cartellopiccl2.setPosition(new Vec(-1.65f, -1.35f, -1));
 
                         scritta.setRotation(new Vec(90, 0, 180));
                         scritta1.setRotation(new Vec(90, 0, 180));
                         scritta.setPosition(new Vec(-1.2f, -0.8f, -1));
                         scritta1.setPosition(new Vec(-1.2f, -0.6f, -1));
 
-                        cartelloGrande.setPosition(new Vec(-1.7f, -1.4f, -1));
-                        cartellopiccl2.setPosition(new Vec(-1.6f, -1.3f, -1));
-                        cartellopiccl2.setPosition(new Vec(-1.65f, -1.35f, -1));
+
 
                         world.add(cartellopiccl2);
                         world.add(cartelloGrande);
+
                         world.add(scritta);
                         world.add(scritta1);
+
+
                     }
 
                 }
