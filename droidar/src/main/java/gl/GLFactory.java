@@ -631,7 +631,8 @@ public class GLFactory {
 		float textSize = 0.15f;
 
 		TextView v = new TextView(context);
-		v.setBackgroundColor(new Color(0, 0, 0, 1).toIntARGB());
+		v.setBackgroundColor(new Color(Color.blackTransparent().red, Color.blackTransparent().green, Color.blackTransparent().blue, Color.blackTransparent().alpha).toIntARGB());
+		//v.setBackgroundColor(new Color(0, 0, 0, 1).toIntARGB());
 		if (colore) {
 			v.setTextColor(new Color(Color.greenTransparent().red, Color.greenTransparent().green, Color.greenTransparent().blue, Color.greenTransparent().alpha).toIntARGB());
 

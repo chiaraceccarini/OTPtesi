@@ -112,7 +112,7 @@ public class Navigation {
     public boolean goOn (LatLng puntoA, int index) {
         if (index>0) {
             Log.d("goOn","goOn");
-            return calculateDistance(puntoA,index, true)<14;
+            return calculateDistance(puntoA,index, true)<10;
         }
         return  false;
     }
